@@ -1,5 +1,10 @@
 % -*- prolog -*-
 
+% From PROLOGDB(5WN).
+
+% Online at:
+% https://wordnet.princeton.edu/wordnet/man/prologdb.5WN.html
+                                                           
 % Each WordNet relation is represented in a separate file by operator
 % name. Some operators are reflexive (i.e. the "reverse" relation is
 % implicit). So, for example, if x is a hypernym of y , y is
@@ -232,8 +237,13 @@
 :- [prolog/wn_ins].
 :- [prolog/wn_mp].
 
-%% coordinate
-%% Coordinate terms are nouns or verbs that have the same hypernym .
+% Inspired by J. Bos, K. Markert (2005): Recognising Textual
+% Entailment with Logical Inference. Proceedings of the 2005
+% Conference on Empirical Methods in Natural Language Processing
+% (EMNLP 2005), pp 628–635.
+
+
+% Coordinate terms are nouns or verbs that have the same hypernym .
 
 ant(X,Y) :-
         s(S1, W1, X, _, _, _),
@@ -260,3 +270,10 @@ is_a(X,Y) :-
 is_a(X,Z) :-
         is_a(X,Y),
         is_a(Y,Z).
+
+% Sample query: is_a('George I','human').
+
+% Missing: sister synsets.  If A and B are sister synsets, then
+% forall(X) A(x) -> not B(x).
+
+% Any other equivalent rules (meronyms, etc.?)

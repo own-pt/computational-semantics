@@ -1,7 +1,11 @@
 
+You need the following Ubuntu packages, or their equivalent if you
+don't use Ubuntu or want to install them externally.
+
 java8 git ant maven graphviz swi-prolog-nox
 
-Create a diretory where sigma will reside and set the SIGMA_HOME environment to it:
+Create a diretory where sigma will reside and set the SIGMA_HOME
+environment to it:
 
 $ mkdir ~/sigma
 $ export SIGMA_HOME=~/sigma
@@ -11,7 +15,7 @@ Clone the sigmakee and sumo repositories and download E.
 $ cd sigma
 $ git clone git@github.com:ontologyportal/sumo.git
 $ git clone git@github.com:ontologyportal/sigmakee.git
-$ http://wwwlehre.dhbw-stuttgart.de/~sschulz/WORK/E_DOWNLOAD/V_1.8/E.tgz
+<download http://wwwlehre.dhbw-stuttgart.de/~sschulz/WORK/E_DOWNLOAD/V_1.8/E.tgz>
 $ pushd E
 $ ./configure && make
 $ popd
@@ -22,19 +26,19 @@ $ ln -s sumo KBs
 
 Copy config.xml from sigmakee/config_vagrant.xml to KBs/config.xml
 
-Update all the paths in config.xml and change them to your local directory.
+Update all the paths in config.xml and change them to your local
+directory, as follows:
 
 /home/vagrant/.sigmakee => to your local SIGMA_HOME
 /home/vagrant/E => to your local SIGMA_HOME/E
 
 set prolog to your local SWI-Prolog installation.
 
-TODO: values for systemsDir? graphDir? tptpHomeDir?
+? TODO: values for systemsDir? graphDir? tptpHomeDir?
 
 Build and run sigmakee:
 
 $ cd sigmakee
-
 $ export MAVEN_OPTS="-Xmx1024m"
 $ mvn -f pom-old.xml -DskipTests clean install tomcat7:run
 
@@ -54,15 +58,21 @@ If your build fails with the following error:
 [INFO] Final Memory: 5M/121M
 [INFO] ------------------------------------------------------------------------
 
-Edit pom-old.xml and remove the tags <pluginManagement> and </pluginManagement>.  Just the tags not their contents.
+Edit pom-old.xml and remove the tags <pluginManagement> and
+</pluginManagement>.  Just the tags not their contents.
 
-I'm not familiar at all with maven; I got this answer from this Stack Overflow answer.
+I'm not familiar at all with maven; I got this answer from this Stack
+Overflow answer: http://stackoverflow.com/questions/25282255/maven-tomcat7-plugin-for-maven-unable-to-determine-the-latest-version#comment39402526_25282354
 
-http://stackoverflow.com/questions/25282255/maven-tomcat7-plugin-for-maven-unable-to-determine-the-latest-version#comment39402526_25282354
+This doesn't happen with maven 3.3.3 / java 1.8.0_66.
+
+This happens with XXX XXX. ? TODO, need to check where this fails.
 
 Once you got the sigmakee system running, you can login with:
 
 http://localhost:9090/sigma/login.html, password admin/admin.
 
-If you get a message 'No Knowledge Bases loaded', double check your SIGMA_HOME, MAVEN_OPTS, and directory structure as described in the first steps above.
+If you get a message 'No Knowledge Bases loaded', double check your
+SIGMA_HOME, MAVEN_OPTS, and directory structure as described in the
+first steps above.
 

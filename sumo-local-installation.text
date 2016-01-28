@@ -76,3 +76,13 @@ If you get a message 'No Knowledge Bases loaded', double check your
 SIGMA_HOME, MAVEN_OPTS, and directory structure as described in the
 first steps above.
 
+######################
+How to execute a class
+######################
+
+With SIGMA_HOME set, from the sigmakee directory, execute something
+like:
+
+mvn -f pom-old.xml exec:java -Dexec.mainClass="com.articulate.sigma.Prolog"
+
+

@@ -83,6 +83,8 @@ How to execute a class
 With SIGMA_HOME set, from the sigmakee directory, execute something
 like:
 
+-> convert SUMO to Prolog
 mvn -f pom-old.xml exec:java -Dexec.mainClass="com.articulate.sigma.Prolog"
 
-
+-> convert SUMO to TPTP (to be used in E)
+mvn -f pom-old.xml exec:java -Dexec.mainClass="com.articulate.sigma.SUMOKBtoTPTPKB"   
